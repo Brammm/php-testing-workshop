@@ -36,13 +36,13 @@ final class CalculatorTest extends TestCase
     public function providesTestData(): array
     {
         return [
-            [
+            'no discount' => [
                 [
                     new OrderLine('Some product', 50, Money::EUR(5000))
                 ],
                 Money::EUR(0)
             ],
-            [
+            'discount for fifty items' => [
                 [
                     new OrderLine('Some product', 51, Money::EUR(50))
                 ],
