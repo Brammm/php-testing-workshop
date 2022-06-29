@@ -9,13 +9,21 @@ use Money\Money;
 
 class Calculator
 {
+    /** @var Discount[] */
+    private array $discounts;
+
+    public function __construct(Discount ...$discounts)
+    {
+        $this->discounts = $discounts;
+    }
+
     public function calculateDiscount(Order $order): Money
     {
-        foreach ($order->lines as $line) {
-            if ($line->amount > 50) {
-                $lineTotal = $line->price->multiply($line->amount);
+        foreach ($this->discounts as $discount) {
+            $discount = $discount->calculate($order);
 
-                return $lineTotal->multiply('0.1');
+            if ($discount->isPositive()) {
+                return $discount;
             }
         }
 

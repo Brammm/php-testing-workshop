@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Brammm\TestingWorkshop\Unit\Discount;
 
 use Brammm\TestingWorkshop\Discount\Calculator;
+use Brammm\TestingWorkshop\Discount\MoreThanFiftyDiscount;
 use Brammm\TestingWorkshop\Model\Order;
 use Brammm\TestingWorkshop\Model\OrderLine;
 use Money\Money;
@@ -18,7 +19,7 @@ final class CalculatorTest extends TestCase
      */
     public function testItReturnsNoDiscount(array $orderLines, Money $expectedDiscount): void
     {
-        $calculator = new Calculator();
+        $calculator = new Calculator(new MoreThanFiftyDiscount());
 
         $actualDiscount = $calculator->calculateDiscount(new Order(
             Uuid::uuid4(),
