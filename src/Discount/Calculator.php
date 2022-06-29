@@ -7,7 +7,7 @@ namespace Brammm\TestingWorkshop\Discount;
 use Brammm\TestingWorkshop\Model\Order;
 use Money\Money;
 
-class Calculator
+final class Calculator
 {
     /** @var Discount[] */
     private array $discounts;

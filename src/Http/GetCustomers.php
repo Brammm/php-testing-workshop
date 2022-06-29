@@ -8,7 +8,7 @@ use Brammm\TestingWorkshop\Provider\CustomerProvider;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-class GetCustomers
+final class GetCustomers
 {
     public function __construct(
         private readonly CustomerProvider $customerProvider

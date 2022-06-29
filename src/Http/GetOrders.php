@@ -9,7 +9,7 @@ use Money\MoneyFormatter;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-class GetOrders
+final class GetOrders
 {
     public function __construct(
         private readonly OrderProvider $orderProvider,
