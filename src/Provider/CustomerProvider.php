@@ -8,12 +8,20 @@ use Brammm\TestingWorkshop\Model\Customer;
 use DateTimeImmutable;
 use Doctrine\DBAL\Connection;
 use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 
 class CustomerProvider
 {
     public function __construct(
         private readonly Connection $connection
     ) {
+    }
+
+    public function findById(UuidInterface $id): Customer
+    {
+        return $this->hydrate(
+            $this->connection->fetchAllAssociative('SELECT * FROM customer WHERE id = ?', [$id->toString()])
+        );
     }
 
     /**
