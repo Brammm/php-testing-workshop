@@ -16,7 +16,7 @@ class Order
         public UuidInterface $id,
         public UuidInterface $customerId,
         public array $lines,
-        public ?DateTimeImmutable $refundedAt,
+        public ?DateTimeImmutable $refundedAt = null,
     ) {
     }
 }
